@@ -13,8 +13,6 @@
 
                 </tr>
                 <tbody id="usuarios">
-
-
                 </tbody>
 
         </table>
@@ -47,7 +45,10 @@
                     var dados = '';
 
                         for(i=0;i<this.usuarios.length;i++){
-                            dados += "<tr><td>" + this.usuarios[i] + "</td></tr>";
+                            dados += '<tr>';
+                            dados += '<td>' + this.usuarios[i] + '</td>';
+                            dados += '<td><button onclick=" app.excluir('+i+')">Excluir</button></td>';
+                            dados += '</tr>';
                         }
                     
                     //atualiza contador
@@ -56,6 +57,12 @@
                     //atualiza DOM
                     this.elUsuarios.innerHTML = dados;
                     
+                };
+
+                this.excluir = function(item){
+                    //remove 1 elemento pos/qtd.
+                    this.usuarios.splice(item, 1);
+                    this.listarTodos();
                 };
             };
 
